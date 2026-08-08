@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ABTalks - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+    <div>
+
+        <p class="small-text">
+            GOOD EVENING
+        </p>
+
+        <h2>
+            Dipika 👋
+        </h2>
+
+    </div>
+
+    <div class="profile-circle">
+        D
+    </div>
+
+    </header>
+
+    <main>
+
+<section class="challenge-info">
+
+    <p class="small-text">
+        YOUR CURRENT CHALLENGE
+    </p>
+
+    <h1>
+        Day <span id="current-day-number">12</span>
+        <span>of 60</span>
+    </h1>
+
+    <p class="muted-text">
+        You're building a strong habit.
+        Keep going.
+    </p>
+
+</section>
+
+<section class="streak-card">
+
+    <div class="streak-top">
+
+        <p>
+            🔥 CURRENT STREAK
+        </p>
+
+        <span>
+            ACTIVE
+        </span>
+
+    </div>
+
+    <h2 id="current-streak">
+        11 DAYS
+    </h2>
+
+    <p id="streak-copy">
+        One more day to reach your
+        12-day milestone.
+    </p>
+
+</section>
+
+<section class="progress-section">
+
+    <div class="section-heading">
+
+        <h3>
+            Challenge Progress
+        </h3>
+
+        <strong id="progress-percent">
+            20%
+        </strong>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div class="progress-fill" id="progress-fill"></div>
+
+    </div>
+
+    <p class="muted-text" id="progress-text">
+        12 of 60 days completed
+    </p>
+
+</section>
+
+<section class="mission-card">
+
+    <p class="small-text">
+        TODAY'S MISSION · DAY <span id="mission-day-number">12</span>
+    </p>
+
+    <h2>
+        Build a Portfolio
+        Hero Section
+    </h2>
+
+    <p>
+        Create a responsive hero section
+        for your developer portfolio.
+    </p>
+
+    <div class="mission-details">
+
+        <span>
+            ⏱ 45 min
+        </span>
+
+        <span>
+            💻 Beginner
+        </span>
+
+    </div>
+
+    <button id="complete-button" class="primary-button" type="button">
+        Mark Challenge Complete
+    </button>
+
+    <a id="task-link" href="day12.html"
+       class="primary-button">
+
+        View Today's Task →
+
+    </a>
+
+    <p id="completion-message" class="muted-text" style="display:none; margin-top: 14px;">
+    </p>
+
+</section>
+
+<section class="achievements">
+
+    <div class="section-heading">
+
+        <h3>
+            Achievements
+        </h3>
+
+        <span>
+            View all
+        </span>
+
+    </div>
+
+
+    <div class="achievement-list">
+
+        <div class="achievement">
+
+            <div class="achievement-icon">
+                🔥
+            </div>
+
+            <div>
+
+                <h4>
+                    7 Day Streak
+                </h4>
+
+                <p>
+                    Consistency unlocked
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">
+                💻
+            </div>
+
+            <div>
+
+                <h4>
+                    First Commit
+                </h4>
+
+                <p>
+                    You started building
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">
+                🚀
+            </div>
+
+            <div>
+
+                <h4>
+                    10 Days Completed
+                </h4>
+
+                <p>
+                    Double digits!
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+<nav class="bottom-nav">
+
+    <a href="index.html">
+        <span>⌂</span>
+        Home
+    </a>
+
+    <a href="dashboard.html"
+       class="active">
+        <span>▣</span>
+        Challenge
+    </a>
+
+    <a href="#">
+        <span>○</span>
+        Profile
+    </a>
+
+</nav>
+
+</body>
+
+</html>

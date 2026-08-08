@@ -1,3 +1,7 @@
+/* ================================
+   GLOBAL STYLES
+================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,272 +9,516 @@
 }
 
 body {
-
     background-color: #0b0f14;
-
     color: #ffffff;
-
     font-family: Arial, sans-serif;
-
     line-height: 1.5;
-
 }
 
-body {
 
-    background-color: #0b0f14;
-
-    color: #ffffff;
-
-    font-family: Arial, sans-serif;
-
-    line-height: 1.5;
-
-}
+/* ================================
+   COMMON CONTAINER
+================================ */
 
 .navbar,
 main {
-
     width: 100%;
-
     max-width: 500px;
-
     margin: auto;
-
     padding-left: 20px;
-
     padding-right: 20px;
-
 }
 
+main {
+    padding-bottom: 120px;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
 .navbar {
-
     min-height: 70px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     border-bottom: 1px solid #20262e;
-
 }
 
 .logo {
-
     font-size: 22px;
-
     font-weight: bold;
-
     letter-spacing: -1px;
-
 }
 
 .nav-label {
-
     font-size: 10px;
-
     color: #8b949e;
-
     letter-spacing: 1px;
-
 }
 
+
+/* ================================
+   HERO SECTION
+================================ */
+
 .hero {
-
     padding-top: 80px;
-
     padding-bottom: 60px;
-
 }
 
 .eyebrow {
-
     color: #a3e635;
-
     font-size: 12px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
-
     margin-bottom: 20px;
-
 }
 
 .hero h1 {
-
     font-size: 48px;
-
     line-height: 1;
-
     letter-spacing: -2px;
-
     margin-bottom: 25px;
-
 }
 
 .hero-description {
-
     color: #9ca3af;
-
     font-size: 17px;
-
     line-height: 1.6;
-
     margin-bottom: 30px;
-
 }
+
+
+/* ================================
+   BUTTON
+================================ */
 
 .primary-button {
-
     display: block;
-
     width: 100%;
-
     padding: 16px;
-
     background-color: #a3e635;
-
     color: #0b0f14;
-
     text-align: center;
-
     text-decoration: none;
-
     font-weight: bold;
-
     border-radius: 12px;
-
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
+
+/* ================================
+   STATS
+================================ */
+
 .stats {
-
     display: flex;
-
     justify-content: space-between;
-
     padding: 25px 0;
-
     border-top: 1px solid #20262e;
-
     border-bottom: 1px solid #20262e;
-
 }
 
 .stat {
-
     text-align: center;
-
     flex: 1;
-
 }
 
 .stat h2 {
-
     font-size: 30px;
-
 }
 
 .stat p {
-
     color: #8b949e;
-
     font-size: 12px;
-
     text-transform: uppercase;
-
 }
+
+
+/* ================================
+   INFORMATION SECTIONS
+================================ */
 
 .how-it-works,
 .why-section,
 .final-cta {
-
     padding-top: 70px;
-
     padding-bottom: 40px;
-
 }
 
 .section-label {
-
     color: #a3e635;
-
     font-size: 11px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
-
     margin-bottom: 12px;
-
 }
 
 .how-it-works h2,
 .why-section h2,
 .final-cta h2 {
-
     font-size: 32px;
-
     line-height: 1.1;
-
     margin-bottom: 30px;
-
 }
 
+
+/* ================================
+   STEPS
+================================ */
+
 .step {
-
     display: flex;
-
     gap: 20px;
-
     padding: 20px 0;
-
     border-bottom: 1px solid #20262e;
-
 }
 
 .step > span {
-
     color: #a3e635;
-
     font-weight: bold;
-
     font-size: 13px;
-
 }
 
 .step h3 {
-
     margin-bottom: 5px;
-
 }
 
 .step p {
-
     color: #8b949e;
-
     font-size: 14px;
-
 }
 
+
+/* ================================
+   WHY SECTION
+================================ */
+
 .why-section {
-
     border-top: 1px solid #20262e;
-
 }
 
 .why-section > p:last-child {
-
     color: #9ca3af;
-
     font-size: 16px;
-
 }
 
-.final-cta {
 
+/* ================================
+   FINAL CTA
+================================ */
+
+.final-cta {
     padding-bottom: 80px;
+}
+
+
+/* ================================
+   DASHBOARD HEADER
+================================ */
+
+.dashboard-header {
+    max-width: 500px;
+    margin: 0 auto 22px;
+    padding: 25px 20px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small-text {
+    color: #8b949e;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.profile-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #a3e635;
+    color: #0b0f14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
+/* ================================
+   CHALLENGE INFORMATION
+================================ */
+
+.challenge-info {
+    max-width: 500px;
+    margin: 0 auto 26px;
+    padding: 0 20px;
+}
+
+.challenge-info h1 {
+    font-size: 42px;
+    margin: 8px 0 12px;
+    line-height: 1.05;
+}
+
+.challenge-info .muted-text {
+    margin-top: 10px;
+    color: #8b949e;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 90%;
+}
+
+.challenge-info h1 span {
+    color: #8b949e;
+    font-size: 22px;
+}
+
+.muted-text {
+    color: #8b949e;
+    font-size: 14px;
+}
+
+
+/* ================================
+   CURRENT STREAK
+================================ */
+
+.streak-card {
+    max-width: 460px;
+    margin: 0 auto 24px;
+    padding: 24px;
+    background-color: #151b23;
+    border-radius: 20px;
+    border: 1px solid rgba(163, 230, 53, 0.12);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.streak-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.streak-top span {
+    color: #a3e635;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.streak-card h2 {
+    font-size: 46px;
+    margin-bottom: 14px;
+}
+
+.streak-card p {
+    color: #8b949e;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ================================
+   PROGRESS BAR
+================================ */
+
+.progress-section {
+    max-width: 460px;
+    margin: 0 auto 24px;
+    padding: 0 20px 10px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-heading h3 {
+    font-size: 16px;
+}
+
+.section-heading strong {
+    color: #a3e635;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #252c35;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 20%;
+    height: 100%;
+    background-color: #a3e635;
+    border-radius: 20px;
+}
+
+
+/* ================================
+   MISSION CARD
+================================ */
+
+.mission-card {
+    max-width: 460px;
+    margin: 0 auto 34px;
+    padding: 28px;
+    background-color: #151b23;
+    border-radius: 18px;
+}
+
+.mission-card h2 {
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 10px 0 14px;
+}
+
+.mission-card > p {
+    color: #8b949e;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.mission-details {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 24px;
+}
+
+.mission-details span {
+    background-color: #20262e;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: #c9d1d9;
+    font-size: 11px;
+}
+
+.mission-card .primary-button {
+    margin-top: 10px;
+}
+
+
+/* ================================
+   ACHIEVEMENTS
+================================ */
+
+.achievements {
+    max-width: 460px;
+    margin: auto;
+    padding: 0 20px 100px;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #151b23;
+    border-radius: 12px;
+}
+
+.achievement-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #20262e;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.achievement h4 {
+    margin-bottom: 3px;
+}
+
+.achievement p {
+    color: #8b949e;
+    font-size: 12px;
+}
+
+
+/* ================================
+   BOTTOM NAVIGATION
+================================ */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    background-color: #11161d;
+    border-top: 1px solid #252c35;
+    display: flex;
+    justify-content: space-around;
+    padding: 14px 10px;
+    z-index: 5;
+}
+
+.bottom-nav a {
+    color: #8b949e;
+    text-decoration: none;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 60px;
+}
+
+.bottom-nav a span {
+    font-size: 18px;
+}
+
+.bottom-nav a.active {
+    color: #a3e635;
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .challenge-info h1 {
+        font-size: 36px;
+    }
+
+    .streak-card,
+    .progress-section,
+    .mission-card,
+    .achievements {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .mission-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .progress-section {
+        padding-bottom: 20px;
+    }
 
 }
