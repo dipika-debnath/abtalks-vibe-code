@@ -569,3 +569,25 @@ main {
 .dashboard-actions .primary-button {
     text-decoration: none;
 }
+
+/* Dashboard Action Buttons */
+
+.dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.dashboard-actions a {
+    text-decoration: none !important;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.dashboard-actions .secondary-button {
+    padding: 10px 14px;
+    font-size: 14px;
+}
