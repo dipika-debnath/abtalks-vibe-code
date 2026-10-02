@@ -1,4 +1,4 @@
-```css
+
 /* ================================
    GLOBAL STYLES
 ================================ */
@@ -764,8 +764,3 @@ main {
     }
 
 }
-```
-
-After replacing it, **commit the file and refresh the live GitHub Pages site**.
-
-The buttons should now stay in the same dark-gray theme even after you've visited the page.
