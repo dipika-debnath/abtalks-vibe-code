@@ -1,20 +1,112 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>ABTalks - All Challenges</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* Challenge page buttons */
+
+        .challenge-action {
+            display: inline-block;
+
+            padding: 11px 16px;
+
+            background-color: #20262e;
+
+            color: #ffffff !important;
+
+            text-decoration: none !important;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            border: 1px solid #303842;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .challenge-action:link,
+        .challenge-action:visited,
+        .challenge-action:hover,
+        .challenge-action:active {
+            color: #ffffff !important;
+
+            text-decoration: none !important;
+        }
+
+
+        .challenge-action:hover {
+            background-color: #2a323c;
+
+            border-color: #3a444f;
+
+            transform: translateY(-1px);
+        }
+
+
+        .challenge-action:active {
+            background-color: #252d36;
+
+            transform: scale(0.98);
+        }
+
+
+        /* Current challenge button */
+
+        .challenge-action.current {
+            background-color: #a3e635;
+
+            color: #0b0f14 !important;
+
+            border-color: #a3e635;
+        }
+
+
+        .challenge-action.current:link,
+        .challenge-action.current:visited,
+        .challenge-action.current:hover,
+        .challenge-action.current:active {
+            color: #0b0f14 !important;
+
+            text-decoration: none !important;
+        }
+
+
+        .challenge-action.current:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
     <header class="dashboard-header">
 
         <div>
+
             <p class="small-text">
                 ABTALKS · 60 DAY CHALLENGE
             </p>
@@ -22,7 +114,9 @@
             <h2>
                 All Challenges
             </h2>
+
         </div>
+
 
         <div class="profile-circle">
             D
@@ -32,6 +126,7 @@
 
 
     <main>
+
 
         <section class="challenge-info">
 
@@ -50,20 +145,24 @@
         </section>
 
 
-        <section class="achievement-list" id="challenge-list">
+        <section class="achievement-list"
+                 id="challenge-list">
 
             Loading challenges...
 
         </section>
+
 
     </main>
 
 
     <nav class="bottom-nav">
 
+
         <a href="index.html">
 
             <span>⌂</span>
+
             Home
 
         </a>
@@ -72,6 +171,7 @@
         <a href="dashboard.html">
 
             <span>▣</span>
+
             Challenge
 
         </a>
@@ -80,9 +180,11 @@
         <a href="profile.html">
 
             <span>○</span>
+
             Profile
 
         </a>
+
 
     </nav>
 
@@ -105,7 +207,7 @@
         let currentDay = 12;
 
 
-        if(saved)
+        if (saved)
         {
 
             try
@@ -119,7 +221,7 @@
                     Number(state.currentDay) || 12;
 
             }
-            catch(error)
+            catch (error)
             {
 
                 currentDay = 12;
@@ -151,14 +253,14 @@
             let status = "";
 
 
-            if(completed)
+            if (completed)
             {
 
                 status =
                     "✓ COMPLETED";
 
             }
-            else if(current)
+            else if (current)
             {
 
                 status =
@@ -177,24 +279,30 @@
             let action = "";
 
 
-            if(completed)
+            if (completed)
             {
 
                 action = `
-                    <a href="challenge.html?day=${challenge.day}"
-                       class="secondary-button">
+                    <a
+                        href="challenge.html?day=${challenge.day}"
+                        class="challenge-action">
+
                         View Challenge
+
                     </a>
                 `;
 
             }
-            else if(current)
+            else if (current)
             {
 
                 action = `
-                    <a href="challenge.html?day=${challenge.day}"
-                       class="primary-button">
+                    <a
+                        href="challenge.html?day=${challenge.day}"
+                        class="challenge-action current">
+
                         Start Challenge
+
                     </a>
                 `;
 
@@ -204,7 +312,9 @@
 
                 action = `
                     <span class="muted-text">
+
                         Complete previous challenges first
+
                     </span>
                 `;
 
@@ -214,7 +324,9 @@
             card.innerHTML = `
 
                 <div class="achievement-icon">
+
                     ${String(challenge.day).padStart(2, "0")}
+
                 </div>
 
 
@@ -236,7 +348,9 @@
 
 
                     <div style="margin-top: 10px;">
+
                         ${action}
+
                     </div>
 
                 </div>
@@ -250,6 +364,8 @@
 
     </script>
 
+
 </body>
 
 </html>
+```
