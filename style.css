@@ -591,3 +591,28 @@ main {
     padding: 10px 14px;
     font-size: 14px;
 }
+
+/* Clean Button Links */
+
+a.primary-button,
+a.secondary-button {
+    text-decoration: none !important;
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+a.primary-button:visited,
+a.secondary-button:visited {
+    text-decoration: none !important;
+}
+
+a.primary-button:hover,
+a.secondary-button:hover {
+    text-decoration: none !important;
+}
+
+a.primary-button:active,
+a.secondary-button:active {
+    text-decoration: none !important;
+}
