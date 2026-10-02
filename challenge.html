@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ABTalks - Daily Challenge</title>
+    <title>ABTalks - All Challenges</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,8 +19,8 @@
                 ABTALKS · 60 DAY CHALLENGE
             </p>
 
-            <h2 id="page-day">
-                Day 12
+            <h2>
+                All Challenges
             </h2>
         </div>
 
@@ -36,172 +36,23 @@
         <section class="challenge-info">
 
             <p class="small-text">
-                TODAY'S CHALLENGE
+                YOUR JOURNEY
             </p>
 
-            <h1 id="challenge-title">
-                Loading challenge...
+            <h1>
+                60 Days of Coding
             </h1>
 
-            <p class="muted-text" id="challenge-description">
-                Loading today's challenge details.
+            <p class="muted-text">
+                Explore every challenge in the ABTalks coding journey.
             </p>
 
         </section>
 
 
-        <section class="streak-card">
-
-            <div class="streak-top">
-
-                <p>
-                    DAY <span id="challenge-number">12</span>
-                </p>
-
-                <span id="challenge-level">
-                    BEGINNER
-                </span>
-
-            </div>
-
-            <h2 id="challenge-time">
-                30 MIN
-            </h2>
-
-            <p>
-                Complete today's mission and continue building
-                your coding habit.
-            </p>
-
+        <section class="achievement-list" id="challenge-list">
+            Loading challenges...
         </section>
-
-
-        <section class="mission-card">
-
-            <p class="small-text">
-                YOUR MISSION
-            </p>
-
-            <h2>
-                Challenge Requirements
-            </h2>
-
-            <div class="achievement-list">
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        01
-                    </div>
-
-                    <div>
-                        <h4 id="requirement-one-title">
-                            Requirement
-                        </h4>
-
-                        <p id="requirement-one">
-                            Loading...
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        02
-                    </div>
-
-                    <div>
-                        <h4 id="requirement-two-title">
-                            Requirement
-                        </h4>
-
-                        <p id="requirement-two">
-                            Loading...
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        03
-                    </div>
-
-                    <div>
-                        <h4 id="requirement-three-title">
-                            Requirement
-                        </h4>
-
-                        <p id="requirement-three">
-                            Loading...
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        04
-                    </div>
-
-                    <div>
-                        <h4 id="requirement-four-title">
-                            Requirement
-                        </h4>
-
-                        <p id="requirement-four">
-                            Loading...
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section class="mission-card">
-
-            <p class="small-text">
-                BEFORE YOU FINISH
-            </p>
-
-            <h2>
-                Submission Checklist
-            </h2>
-
-            <p>
-                Complete the challenge, test your work,
-                and save your finished project.
-            </p>
-
-            <div class="mission-details">
-
-                <span id="challenge-tool">
-                    💻 Loading...
-                </span>
-
-                <span>
-                    🚀 GitHub
-                </span>
-
-            </div>
-
-            <a href="dashboard.html"
-               class="primary-button">
-                ← Back to Dashboard
-            </a>
-
-        </section>
-
 
     </main>
 
@@ -228,89 +79,45 @@
 
     <script src="challenges.js"></script>
 
-<script>
+    <script>
 
-    const params =
-        new URLSearchParams(window.location.search);
+        const challengeList =
+            document.getElementById("challenge-list");
 
-    const day =
-        Number(params.get("day")) || 1;
-
-    const challenge =
-        challenges.find(item => item.day === day);
-
-    if (challenge)
-    {
-        document.title =
-            `ABTalks - Day ${challenge.day}`;
-
-        document.getElementById("page-day").textContent =
-            `Day ${challenge.day}`;
-
-        document.getElementById("challenge-number").textContent =
-            challenge.day;
-
-        document.getElementById("challenge-title").textContent =
-            challenge.title;
-
-        document.getElementById("challenge-description").textContent =
-            challenge.description;
-
-        document.getElementById("challenge-level").textContent =
-            challenge.level;
-
-        document.getElementById("challenge-time").textContent =
-            challenge.time;
-
-        document.getElementById("challenge-tool").textContent =
-            `💻 ${challenge.tool}`;
-
-        const requirementElements = [
-            {
-                title: document.getElementById("requirement-one-title"),
-                text: document.getElementById("requirement-one")
-            },
-            {
-                title: document.getElementById("requirement-two-title"),
-                text: document.getElementById("requirement-two")
-            },
-            {
-                title: document.getElementById("requirement-three-title"),
-                text: document.getElementById("requirement-three")
-            },
-            {
-                title: document.getElementById("requirement-four-title"),
-                text: document.getElementById("requirement-four")
-            }
-        ];
-
-        requirementElements.forEach((element, index) =>
+        challenges.forEach(challenge =>
         {
-            if (challenge.tasks[index])
-            {
-                element.title.textContent =
-                    `Task ${index + 1}`;
 
-                element.text.textContent =
-                    challenge.tasks[index];
-            }
-            else
-            {
-                element.title.parentElement.parentElement.style.display =
-                    "none";
-            }
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "achievement";
+
+            card.innerHTML = `
+                <div class="achievement-icon">
+                    ${String(challenge.day).padStart(2, "0")}
+                </div>
+
+                <div>
+                    <h4>
+                        ${challenge.title}
+                    </h4>
+
+                    <p>
+                        ${challenge.level} · ${challenge.time}
+                    </p>
+
+                    <a href="challenge.html?day=${challenge.day}">
+                        View Challenge →
+                    </a>
+                </div>
+            `;
+
+            challengeList.appendChild(card);
+
         });
-    }
-    else
-    {
-        document.getElementById("challenge-title").textContent =
-            "Challenge Not Found";
 
-        document.getElementById("challenge-description").textContent =
-            "The requested challenge does not exist.";
-    }
-
-</script>
+    </script>
 
 </body>
 
