@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABTalks - Daily Challenge</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <div>
+            <p class="small-text">
+                ABTALKS · 60 DAY CHALLENGE
+            </p>
+
+            <h2 id="page-day">
+                Day 12
+            </h2>
+        </div>
+
+        <div class="profile-circle">
+            D
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="challenge-info">
+
+            <p class="small-text">
+                TODAY'S CHALLENGE
+            </p>
+
+            <h1 id="challenge-title">
+                Build a Portfolio Hero Section
+            </h1>
+
+            <p class="muted-text" id="challenge-description">
+                Create a responsive hero section that introduces
+                you, your skills and what you are currently building.
+            </p>
+
+        </section>
+
+
+        <section class="streak-card">
+
+            <div class="streak-top">
+
+                <p>
+                    DAY <span id="challenge-number">12</span>
+                </p>
+
+                <span id="challenge-level">
+                    BEGINNER
+                </span>
+
+            </div>
+
+            <h2 id="challenge-time">
+                45 MIN
+            </h2>
+
+            <p>
+                Complete today's mission and continue building
+                your coding habit.
+            </p>
+
+        </section>
+
+
+        <section class="mission-card">
+
+            <p class="small-text">
+                YOUR MISSION
+            </p>
+
+            <h2>
+                Challenge Requirements
+            </h2>
+
+            <div class="achievement-list">
+
+                <div class="achievement">
+
+                    <div class="achievement-icon">
+                        01
+                    </div>
+
+                    <div>
+                        <h4 id="requirement-one-title">
+                            Introduction
+                        </h4>
+
+                        <p id="requirement-one">
+                            Add your name and a short introduction.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="achievement">
+
+                    <div class="achievement-icon">
+                        02
+                    </div>
+
+                    <div>
+                        <h4 id="requirement-two-title">
+                            Skills
+                        </h4>
+
+                        <p id="requirement-two">
+                            Mention at least three technologies or skills.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="achievement">
+
+                    <div class="achievement-icon">
+                        03
+                    </div>
+
+                    <div>
+                        <h4 id="requirement-three-title">
+                            Call To Action
+                        </h4>
+
+                        <p id="requirement-three">
+                            Add a button such as View My Work or Contact Me.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="achievement">
+
+                    <div class="achievement-icon">
+                        04
+                    </div>
+
+                    <div>
+                        <h4 id="requirement-four-title">
+                            Responsive Design
+                        </h4>
+
+                        <p id="requirement-four">
+                            Make the section readable on desktop and mobile.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="mission-card">
+
+            <p class="small-text">
+                BEFORE YOU FINISH
+            </p>
+
+            <h2>
+                Submission Checklist
+            </h2>
+
+            <p>
+                Make sure your project works correctly, looks clean,
+                and is saved in your GitHub repository.
+            </p>
+
+            <div class="mission-details">
+
+                <span id="challenge-tool">
+                    💻 HTML + CSS
+                </span>
+
+                <span>
+                    🚀 GitHub
+                </span>
+
+            </div>
+
+            <a href="dashboard.html"
+               class="primary-button">
+                ← Back to Dashboard
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <nav class="bottom-nav">
+
+        <a href="index.html">
+
+            <span>⌂</span>
+
+            Home
+
+        </a>
+
+
+        <a href="dashboard.html"
+           class="active">
+
+            <span>▣</span>
+
+            Challenge
+
+        </a>
+
+
+        <a href="#">
+
+            <span>○</span>
+
+            Profile
+
+        </a>
+
+    </nav>
+
+
+    <script>
+
+        /*
+         * The page can later be opened as:
+         *
+         * challenge.html?day=12
+         * challenge.html?day=13
+         * challenge.html?day=14
+         *
+         * For now, Day 12 is our first working challenge.
+         */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const day = Number(params.get("day")) || 12;
+
+        document.getElementById("page-day").textContent =
+            `Day ${day}`;
+
+        document.getElementById("challenge-number").textContent =
+            day;
+
+    </script>
+
+</body>
+
+</html>
