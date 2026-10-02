@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABTalks - Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <div>
+            <p class="small-text">
+                ABTALKS · 60 DAY CHALLENGE
+            </p>
+
+            <h2>
+                My Profile
+            </h2>
+        </div>
+
+        <div class="profile-circle">
+            D
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="challenge-info">
+
+            <p class="small-text">
+                CODER PROFILE
+            </p>
+
+            <h1>
+                Dipika
+            </h1>
+
+            <p class="muted-text">
+                Building coding skills one challenge at a time.
+            </p>
+
+        </section>
+
+
+        <section class="streak-card">
+
+            <div class="streak-top">
+
+                <p>
+                    CURRENT STREAK
+                </p>
+
+                <span>
+                    🔥
+                </span>
+
+            </div>
+
+            <h2 id="profile-streak">
+                11 DAYS
+            </h2>
+
+            <p>
+                Keep completing daily challenges to continue your streak.
+            </p>
+
+        </section>
+
+
+        <section class="mission-card">
+
+            <p class="small-text">
+                YOUR PROGRESS
+            </p>
+
+            <h2 id="profile-progress">
+                18%
+            </h2>
+
+            <p id="profile-completed">
+                11 of 60 days completed
+            </p>
+
+        </section>
+
+
+        <section class="mission-card">
+
+            <p class="small-text">
+                CHALLENGE STATUS
+            </p>
+
+            <h2 id="profile-current">
+                Day 12
+            </h2>
+
+            <p>
+                Your next challenge is ready.
+            </p>
+
+            <a href="dashboard.html"
+               class="primary-button">
+                Go to Dashboard
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <nav class="bottom-nav">
+
+        <a href="index.html">
+            <span>⌂</span>
+            Home
+        </a>
+
+        <a href="dashboard.html">
+            <span>▣</span>
+            Dashboard
+        </a>
+
+        <a href="profile.html">
+            <span>○</span>
+            Profile
+        </a>
+
+    </nav>
+
+
+    <script>
+
+        const saved =
+            localStorage.getItem("abtalks-dashboard-state");
+
+        let currentDay = 12;
+        let streakDays = 11;
+
+        if(saved)
+        {
+            try
+            {
+                const state = JSON.parse(saved);
+
+                currentDay =
+                    Number(state.currentDay) || 12;
+
+                streakDays =
+                    Number(state.streakDays) || 11;
+            }
+            catch(error)
+            {
+                currentDay = 12;
+                streakDays = 11;
+            }
+        }
+
+
+        const completedDays =
+            Math.max(0, currentDay - 1);
+
+        const percent =
+            Math.min(
+                100,
+                Math.round(
+                    (completedDays / 60) * 100
+                )
+            );
+
+
+        document.getElementById("profile-streak").textContent =
+            `${streakDays} ${streakDays === 1 ? "DAY" : "DAYS"}`;
+
+        document.getElementById("profile-progress").textContent =
+            `${percent}%`;
+
+        document.getElementById("profile-completed").textContent =
+            `${completedDays} of 60 days completed`;
+
+        document.getElementById("profile-current").textContent =
+            `Day ${currentDay}`;
+
+    </script>
+
+</body>
+
+</html>
