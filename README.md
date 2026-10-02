@@ -91,21 +91,25 @@ abtalks-vibe-code
 
 ### Dashboard
 
-<img src="dashboard.png" width="60%">
+<img src="dashboard.png" width="40%">
+
 
 ### Today's Challenge
 
-<img src="challenge.png" width="60%">
+<img src="challenge.png" width="40%">
+
 
 ### All Challenges
 
-<img src="challenges.png" width="60%">
+<img src="challenges.png" width="40%">
+
 
 ### Profile
 
-<img src="profile.png" width="60%">
+<img src="profile.png" width="40%">
+
 
 ### Achievements
 
-<img src="achievements.png" width="60%">
+<img src="achievements.png" width="40%">
 
