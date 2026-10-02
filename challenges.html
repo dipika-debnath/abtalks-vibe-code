@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABTalks - All Challenges</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <div>
+            <p class="small-text">
+                ABTALKS · 60 DAY CHALLENGE
+            </p>
+
+            <h2>
+                All Challenges
+            </h2>
+        </div>
+
+        <div class="profile-circle">
+            D
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="challenge-info">
+
+            <p class="small-text">
+                YOUR JOURNEY
+            </p>
+
+            <h1>
+                60 Days of Coding
+            </h1>
+
+            <p class="muted-text">
+                Explore your complete coding journey.
+            </p>
+
+        </section>
+
+
+        <section class="achievement-list" id="challenge-list">
+
+            Loading challenges...
+
+        </section>
+
+    </main>
+
+
+    <nav class="bottom-nav">
+
+        <a href="index.html">
+
+            <span>⌂</span>
+            Home
+
+        </a>
+
+
+        <a href="dashboard.html">
+
+            <span>▣</span>
+            Challenge
+
+        </a>
+
+
+        <a href="profile.html">
+
+            <span>○</span>
+            Profile
+
+        </a>
+
+    </nav>
+
+
+    <script src="challenges.js"></script>
+
+
+    <script>
+
+        const challengeList =
+            document.getElementById("challenge-list");
+
+
+        const saved =
+            localStorage.getItem(
+                "abtalks-dashboard-state"
+            );
+
+
+        let currentDay = 12;
+
+
+        if(saved)
+        {
+
+            try
+            {
+
+                const state =
+                    JSON.parse(saved);
+
+
+                currentDay =
+                    Number(state.currentDay) || 12;
+
+            }
+            catch(error)
+            {
+
+                currentDay = 12;
+
+            }
+
+        }
+
+
+        challenges.forEach(challenge =>
+        {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "achievement";
+
+
+            const completed =
+                challenge.day < currentDay;
+
+
+            const current =
+                challenge.day === currentDay;
+
+
+            let status = "";
+
+
+            if(completed)
+            {
+
+                status =
+                    "✓ COMPLETED";
+
+            }
+            else if(current)
+            {
+
+                status =
+                    "● CURRENT";
+
+            }
+            else
+            {
+
+                status =
+                    "🔒 LOCKED";
+
+            }
+
+
+            let action = "";
+
+
+            if(completed)
+            {
+
+                action = `
+                    <a href="challenge.html?day=${challenge.day}"
+                       class="secondary-button">
+                        View Challenge
+                    </a>
+                `;
+
+            }
+            else if(current)
+            {
+
+                action = `
+                    <a href="challenge.html?day=${challenge.day}"
+                       class="primary-button">
+                        Start Challenge
+                    </a>
+                `;
+
+            }
+            else
+            {
+
+                action = `
+                    <span class="muted-text">
+                        Complete previous challenges first
+                    </span>
+                `;
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="achievement-icon">
+                    ${String(challenge.day).padStart(2, "0")}
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        ${challenge.title}
+                    </h4>
+
+
+                    <p>
+                        ${challenge.level} · ${challenge.time}
+                    </p>
+
+
+                    <p>
+                        ${status}
+                    </p>
+
+
+                    <div style="margin-top: 10px;">
+                        ${action}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            challengeList.appendChild(card);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
