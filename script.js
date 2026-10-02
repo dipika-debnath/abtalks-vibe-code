@@ -5,34 +5,51 @@ const defaultState = {
     streakDays: 11
 };
 
-const currentDayNumber = document.getElementById("current-day-number");
-const missionDayNumber = document.getElementById("mission-day-number");
+const currentDayNumber =
+    document.getElementById("current-day-number");
 
-const currentStreak = document.getElementById("current-streak");
-const streakCopy = document.getElementById("streak-copy");
+const missionDayNumber =
+    document.getElementById("mission-day-number");
 
-const progressPercent = document.getElementById("progress-percent");
-const progressFill = document.getElementById("progress-fill");
-const progressText = document.getElementById("progress-text");
+const currentStreak =
+    document.getElementById("current-streak");
 
-const completeButton = document.getElementById("complete-button");
-const completionMessage = document.getElementById("completion-message");
+const streakCopy =
+    document.getElementById("streak-copy");
 
-const taskLink = document.getElementById("task-link");
+const progressPercent =
+    document.getElementById("progress-percent");
+
+const progressFill =
+    document.getElementById("progress-fill");
+
+const progressText =
+    document.getElementById("progress-text");
+
+const completeButton =
+    document.getElementById("complete-button");
+
+const completionMessage =
+    document.getElementById("completion-message");
+
+const taskLink =
+    document.getElementById("task-link");
 
 
 function loadState()
 {
-    const saved = localStorage.getItem("abtalks-dashboard-state");
+    const saved =
+        localStorage.getItem("abtalks-dashboard-state");
 
-    if (!saved)
+    if(!saved)
     {
         return { ...defaultState };
     }
 
     try
     {
-        const parsed = JSON.parse(saved);
+        const parsed =
+            JSON.parse(saved);
 
         return {
             currentDay:
@@ -44,7 +61,7 @@ function loadState()
                 defaultState.streakDays
         };
     }
-    catch (error)
+    catch(error)
     {
         return { ...defaultState };
     }
@@ -60,6 +77,14 @@ function saveState(state)
 }
 
 
+function getCurrentChallenge(day)
+{
+    return challenges.find(
+        challenge => challenge.day === day
+    );
+}
+
+
 function formatStreak(days)
 {
     return days === 1
@@ -70,13 +95,30 @@ function formatStreak(days)
 
 function render(state)
 {
-    const completedDays = state.currentDay;
+    const challenge =
+        getCurrentChallenge(state.currentDay);
 
-    const percent = Math.min(
-        100,
-        Math.round((completedDays / totalDays) * 100)
-    );
+    if(!challenge)
+    {
+        return;
+    }
 
+
+    const completedDays =
+        Math.max(0, state.currentDay - 1);
+
+    const percent =
+        Math.min(
+            100,
+            Math.round(
+                (completedDays / totalDays) * 100
+            )
+        );
+
+
+    /*
+     * Current day
+     */
 
     currentDayNumber.textContent =
         state.currentDay;
@@ -85,63 +127,140 @@ function render(state)
         state.currentDay;
 
 
+    /*
+     * Current streak
+     */
+
     currentStreak.textContent =
         formatStreak(state.streakDays);
 
 
+    if(state.currentDay < totalDays)
+    {
+        streakCopy.textContent =
+            `Complete Day ${state.currentDay} to continue your streak.`;
+    }
+    else
+    {
+        streakCopy.textContent =
+            "You have reached the final day of the challenge!";
+    }
+
+
+    /*
+     * Progress
+     */
+
     progressPercent.textContent =
         `${percent}%`;
 
-
     progressFill.style.width =
         `${percent}%`;
-
 
     progressText.textContent =
         `${completedDays} of ${totalDays} days completed`;
 
 
-    if (state.currentDay < totalDays)
+    /*
+     * Today's challenge
+     */
+
+    const missionTitle =
+        document.querySelector(".mission-card h2");
+
+    const missionDescription =
+        document.querySelector(".mission-card p:not(.small-text)");
+
+    const missionDetails =
+        document.querySelectorAll(".mission-details span");
+
+
+    if(missionTitle)
     {
-        streakCopy.textContent =
-            `One more day to reach your ${state.currentDay + 1}-day milestone.`;
+        missionTitle.textContent =
+            challenge.title;
     }
-    else
+
+
+    if(missionDescription)
     {
-        streakCopy.textContent =
-            "You have completed the full 60-day challenge!";
+        missionDescription.textContent =
+            challenge.description;
+    }
+
+
+    if(missionDetails.length >= 2)
+    {
+        missionDetails[0].textContent =
+            `⏱ ${challenge.time}`;
+
+        missionDetails[1].textContent =
+            `💻 ${challenge.level}`;
     }
 
 
     /*
-        Open the reusable challenge page
-        instead of creating day12.html,
-        day13.html, day14.html, etc.
-    */
+     * Open the reusable challenge page
+     */
 
-    if (taskLink)
+    if(taskLink)
     {
         taskLink.href =
             `challenge.html?day=${state.currentDay}`;
     }
 
 
-    completionMessage.style.display =
-        "none";
+    /*
+     * Completion message
+     */
+
+    if(completionMessage)
+    {
+        completionMessage.style.display =
+            "none";
+    }
+
+
+    /*
+     * Final day handling
+     */
+
+    if(completeButton)
+    {
+        if(state.currentDay >= totalDays)
+        {
+            completeButton.textContent =
+                "Challenge Completed";
+
+            completeButton.disabled =
+                true;
+        }
+        else
+        {
+            completeButton.textContent =
+                "Mark Challenge Complete";
+
+            completeButton.disabled =
+                false;
+        }
+    }
 }
 
 
 function completeDay(state)
 {
+    if(state.currentDay >= totalDays)
+    {
+        return;
+    }
+
+
     const completedDay =
         state.currentDay;
 
 
-    if (state.currentDay < totalDays)
-    {
-        state.currentDay += 1;
-        state.streakDays += 1;
-    }
+    state.currentDay += 1;
+    state.streakDays += 1;
 
 
     saveState(state);
@@ -149,16 +268,8 @@ function completeDay(state)
     render(state);
 
 
-    if (completedDay < totalDays)
-    {
-        completionMessage.textContent =
-            `Great job! Day ${completedDay} is complete. Day ${state.currentDay} is now ready.`;
-    }
-    else
-    {
-        completionMessage.textContent =
-            "Congratulations! You completed the full 60-day challenge.";
-    }
+    completionMessage.textContent =
+        `Great job! Day ${completedDay} is complete. Day ${state.currentDay} is now ready.`;
 
 
     completionMessage.style.display =
@@ -166,16 +277,18 @@ function completeDay(state)
 }
 
 
-const state = loadState();
+const state =
+    loadState();
+
 
 render(state);
 
 
-if (completeButton)
+if(completeButton)
 {
     completeButton.addEventListener(
         "click",
-        function ()
+        function()
         {
             completeDay(state);
         }
