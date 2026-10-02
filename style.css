@@ -92,7 +92,7 @@ main {
 
 
 /* ================================
-   BUTTON
+   BUTTONS
 ================================ */
 
 .primary-button {
@@ -108,6 +108,56 @@ main {
     border: none;
     cursor: pointer;
     font-family: inherit;
+}
+
+.primary-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Dashboard Action Buttons */
+
+.dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.dashboard-button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+
+    background-color: #20262e;
+    color: #ffffff;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid #303842;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+                background-color 0.2s ease;
+}
+
+.dashboard-button:link,
+.dashboard-button:visited,
+.dashboard-button:hover,
+.dashboard-button:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dashboard-button:hover {
+    background-color: #2a323c;
+    transform: translateY(-1px);
 }
 
 
@@ -326,6 +376,7 @@ main {
     line-height: 1.7;
 }
 
+
 /* ================================
    PROGRESS BAR
 ================================ */
@@ -452,6 +503,66 @@ main {
 
 
 /* ================================
+   ALL CHALLENGES
+================================ */
+
+#challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#challenge-list .achievement {
+    transition: transform 0.2s ease;
+}
+
+#challenge-list .achievement:hover {
+    transform: translateY(-2px);
+}
+
+#challenge-list .achievement a {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+
+/* ================================
+   SECONDARY BUTTON
+================================ */
+
+.secondary-button {
+    display: inline-block;
+    padding: 12px 16px;
+
+    background-color: #20262e;
+    color: #ffffff;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid #303842;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.secondary-button:link,
+.secondary-button:visited,
+.secondary-button:hover,
+.secondary-button:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.secondary-button:hover {
+    background-color: #2a323c;
+}
+
+
+/* ================================
    BOTTOM NAVIGATION
 ================================ */
 
@@ -479,6 +590,12 @@ main {
     align-items: center;
     gap: 6px;
     min-width: 60px;
+}
+
+.bottom-nav a:visited,
+.bottom-nav a:hover,
+.bottom-nav a:active {
+    text-decoration: none;
 }
 
 .bottom-nav a span {
@@ -521,98 +638,4 @@ main {
         padding-bottom: 20px;
     }
 
-}
-
-/* 60-Day Challenge List */
-
-#challenge-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-#challenge-list .achievement {
-    transition: transform 0.2s ease;
-}
-
-#challenge-list .achievement:hover {
-    transform: translateY(-2px);
-}
-
-#challenge-list .achievement a {
-    display: inline-block;
-    margin-top: 8px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-/* Dashboard Action Buttons */
-
-.dashboard-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.dashboard-actions a {
-    text-decoration: none;
-}
-
-.dashboard-actions .secondary-button {
-    display: inline-block;
-    padding: 10px 14px;
-    font-size: 14px;
-    border-radius: 8px;
-}
-
-.dashboard-actions .primary-button {
-    text-decoration: none;
-}
-
-/* Dashboard Action Buttons */
-
-.dashboard-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.dashboard-actions a {
-    text-decoration: none !important;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.dashboard-actions .secondary-button {
-    padding: 10px 14px;
-    font-size: 14px;
-}
-
-/* Clean Button Links */
-
-a.primary-button,
-a.secondary-button {
-    text-decoration: none !important;
-    display: inline-block;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-a.primary-button:visited,
-a.secondary-button:visited {
-    text-decoration: none !important;
-}
-
-a.primary-button:hover,
-a.secondary-button:hover {
-    text-decoration: none !important;
-}
-
-a.primary-button:active,
-a.secondary-button:active {
-    text-decoration: none !important;
 }
