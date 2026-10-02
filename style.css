@@ -522,3 +522,26 @@ main {
     }
 
 }
+
+/* 60-Day Challenge List */
+
+#challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#challenge-list .achievement {
+    transition: transform 0.2s ease;
+}
+
+#challenge-list .achievement:hover {
+    transform: translateY(-2px);
+}
+
+#challenge-list .achievement a {
+    display: inline-block;
+    margin-top: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
