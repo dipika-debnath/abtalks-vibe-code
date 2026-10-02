@@ -81,86 +81,121 @@
 
     <script>
 
-    const challengeList =
-        document.getElementById("challenge-list");
+        const challengeList =
+            document.getElementById("challenge-list");
 
-    const saved =
-        localStorage.getItem("abtalks-dashboard-state");
 
-    let currentDay = 12;
+        const saved =
+            localStorage.getItem("abtalks-dashboard-state");
 
-    if(saved)
-    {
-        try
+
+        let currentDay = 12;
+
+
+        if(saved)
         {
-            const state = JSON.parse(saved);
+            try
+            {
+                const state =
+                    JSON.parse(saved);
 
-            currentDay =
-                Number(state.currentDay) || 12;
-        }
-        catch(error)
-        {
-            currentDay = 12;
-        }
-    }
-
-
-    challenges.forEach(challenge =>
-    {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "achievement";
-
-
-        let status = "";
-
-        if(challenge.day < currentDay)
-        {
-            status = "✓ COMPLETED";
-        }
-        else if(challenge.day === currentDay)
-        {
-            status = "● CURRENT";
-        }
-        else
-        {
-            status = "LOCKED";
+                currentDay =
+                    Number(state.currentDay) || 12;
+            }
+            catch(error)
+            {
+                currentDay = 12;
+            }
         }
 
 
-        card.innerHTML = `
-            <div class="achievement-icon">
-                ${String(challenge.day).padStart(2, "0")}
-            </div>
+        challenges.forEach(challenge =>
+        {
 
-            <div>
-                <h4>
-                    ${challenge.title}
-                </h4>
+            const card =
+                document.createElement("div");
 
-                <p>
-                    ${challenge.level} · ${challenge.time}
-                </p>
-
-                <p>
-                    ${status}
-                </p>
-
-                <a href="challenge.html?day=${challenge.day}">
-                    View Challenge →
-                </a>
-            </div>
-        `;
+            card.className =
+                "achievement";
 
 
-        challengeList.appendChild(card);
+            let status = "";
 
-    });
+            if(challenge.day < currentDay)
+            {
+                status = "✓ COMPLETED";
+            }
+            else if(challenge.day === currentDay)
+            {
+                status = "● CURRENT";
+            }
+            else
+            {
+                status = "LOCKED";
+            }
 
-</script>
+
+            let action = "";
+
+
+            if(challenge.day < currentDay)
+            {
+                action = `
+                    <a href="challenge.html?day=${challenge.day}">
+                        View Challenge →
+                    </a>
+                `;
+            }
+            else if(challenge.day === currentDay)
+            {
+                action = `
+                    <a href="challenge.html?day=${challenge.day}">
+                        Start Challenge →
+                    </a>
+                `;
+            }
+            else
+            {
+                action = `
+                    <p>
+                        🔒 Locked
+                    </p>
+                `;
+            }
+
+
+            card.innerHTML = `
+
+                <div class="achievement-icon">
+                    ${String(challenge.day).padStart(2, "0")}
+                </div>
+
+                <div>
+
+                    <h4>
+                        ${challenge.title}
+                    </h4>
+
+                    <p>
+                        ${challenge.level} · ${challenge.time}
+                    </p>
+
+                    <p>
+                        ${status}
+                    </p>
+
+                    ${action}
+
+                </div>
+
+            `;
+
+
+            challengeList.appendChild(card);
+
+        });
+
+    </script>
 
 </body>
 
