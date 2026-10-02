@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ABTalks - All Challenges</title>
+    <title>ABTalks - Challenge</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +20,7 @@
             </p>
 
             <h2>
-                All Challenges
+                Today's Challenge
             </h2>
         </div>
 
@@ -35,23 +35,73 @@
 
         <section class="challenge-info">
 
-            <p class="small-text">
-                YOUR JOURNEY
+            <p class="small-text" id="challenge-day">
+                DAY 12 · BEGINNER
             </p>
 
-            <h1>
-                60 Days of Coding
+            <h1 id="challenge-title">
+                Loading challenge...
             </h1>
 
-            <p class="muted-text">
-                Explore every challenge in the ABTalks coding journey.
+            <p class="muted-text" id="challenge-description">
+                Loading challenge description...
             </p>
 
         </section>
 
 
-        <section class="achievement-list" id="challenge-list">
-            Loading challenges...
+        <section class="mission-card">
+
+            <div class="mission-details">
+
+                <span id="challenge-time">
+                    ⏱ Loading
+                </span>
+
+                <span id="challenge-tool">
+                    💻 Loading
+                </span>
+
+            </div>
+
+
+            <h3>
+                Your Tasks
+            </h3>
+
+
+            <div id="challenge-tasks">
+                Loading tasks...
+            </div>
+
+
+            <button id="complete-button"
+                    class="primary-button"
+                    type="button">
+
+                Mark Challenge Complete
+
+            </button>
+
+
+            <p id="completion-message"
+               class="muted-text"
+               style="display:none; margin-top:14px;">
+
+            </p>
+
+        </section>
+
+
+        <section class="mission-card">
+
+            <a href="dashboard.html"
+               class="secondary-button">
+
+                ← Back to Dashboard
+
+            </a>
+
         </section>
 
     </main>
@@ -60,18 +110,27 @@
     <nav class="bottom-nav">
 
         <a href="index.html">
+
             <span>⌂</span>
             Home
+
         </a>
 
-        <a href="dashboard.html">
+
+        <a href="dashboard.html"
+           class="active">
+
             <span>▣</span>
-            Dashboard
+            Challenge
+
         </a>
+
 
         <a href="profile.html">
+
             <span>○</span>
             Profile
+
         </a>
 
     </nav>
@@ -79,10 +138,15 @@
 
     <script src="challenges.js"></script>
 
+
     <script>
 
-        const challengeList =
-            document.getElementById("challenge-list");
+        const params =
+            new URLSearchParams(window.location.search);
+
+
+        const requestedDay =
+            Number(params.get("day"));
 
 
         const saved =
@@ -101,6 +165,7 @@
 
                 currentDay =
                     Number(state.currentDay) || 12;
+
             }
             catch(error)
             {
@@ -109,91 +174,194 @@
         }
 
 
-        challenges.forEach(challenge =>
+        const day =
+            requestedDay || currentDay;
+
+
+        const challenge =
+            challenges.find(
+                item => item.day === day
+            );
+
+
+        const title =
+            document.getElementById("challenge-title");
+
+
+        const description =
+            document.getElementById("challenge-description");
+
+
+        const dayLabel =
+            document.getElementById("challenge-day");
+
+
+        const time =
+            document.getElementById("challenge-time");
+
+
+        const tool =
+            document.getElementById("challenge-tool");
+
+
+        const taskContainer =
+            document.getElementById("challenge-tasks");
+
+
+        const completeButton =
+            document.getElementById("complete-button");
+
+
+        const completionMessage =
+            document.getElementById("completion-message");
+
+
+        if(!challenge)
         {
 
-            const card =
-                document.createElement("div");
+            title.textContent =
+                "Challenge Not Found";
 
-            card.className =
-                "achievement";
+            description.textContent =
+                "The requested challenge does not exist.";
+
+            dayLabel.textContent =
+                "ERROR";
+
+            completeButton.style.display =
+                "none";
+
+        }
+        else
+        {
+
+            document.title =
+                `ABTalks - Day ${challenge.day}`;
 
 
-            let status = "";
+            dayLabel.textContent =
+                `DAY ${challenge.day} · ${challenge.level}`;
 
-            if(challenge.day < currentDay)
+
+            title.textContent =
+                challenge.title;
+
+
+            description.textContent =
+                challenge.description;
+
+
+            time.textContent =
+                `⏱ ${challenge.time}`;
+
+
+            tool.textContent =
+                `💻 ${challenge.tool}`;
+
+
+            taskContainer.innerHTML = "";
+
+
+            challenge.tasks.forEach(
+                (task, index) =>
+                {
+
+                    const taskItem =
+                        document.createElement("p");
+
+
+                    taskItem.textContent =
+                        `${index + 1}. ${task}`;
+
+
+                    taskContainer.appendChild(
+                        taskItem
+                    );
+
+                }
+            );
+
+
+            if(day !== currentDay)
             {
-                status = "✓ COMPLETED";
-            }
-            else if(challenge.day === currentDay)
-            {
-                status = "● CURRENT";
-            }
-            else
-            {
-                status = "LOCKED";
+
+                completeButton.style.display =
+                    "none";
+
             }
 
 
-            let action = "";
+            completeButton.addEventListener(
+                "click",
+                function()
+                {
+
+                    const savedState =
+                        localStorage.getItem(
+                            "abtalks-dashboard-state"
+                        );
 
 
-            if(challenge.day < currentDay)
-            {
-                action = `
-                    <a href="challenge.html?day=${challenge.day}">
-                        View Challenge →
-                    </a>
-                `;
-            }
-            else if(challenge.day === currentDay)
-            {
-                action = `
-                    <a href="challenge.html?day=${challenge.day}">
-                        Start Challenge →
-                    </a>
-                `;
-            }
-            else
-            {
-                action = `
-                    <p>
-                        🔒 Locked
-                    </p>
-                `;
-            }
+                    let state =
+                    {
+                        currentDay: 12,
+                        streakDays: 11
+                    };
 
 
-            card.innerHTML = `
+                    if(savedState)
+                    {
 
-                <div class="achievement-icon">
-                    ${String(challenge.day).padStart(2, "0")}
-                </div>
+                        try
+                        {
+                            state =
+                                JSON.parse(savedState);
+                        }
+                        catch(error)
+                        {
+                            state =
+                            {
+                                currentDay: 12,
+                                streakDays: 11
+                            };
+                        }
 
-                <div>
-
-                    <h4>
-                        ${challenge.title}
-                    </h4>
-
-                    <p>
-                        ${challenge.level} · ${challenge.time}
-                    </p>
-
-                    <p>
-                        ${status}
-                    </p>
-
-                    ${action}
-
-                </div>
-
-            `;
+                    }
 
 
-            challengeList.appendChild(card);
+                    if(state.currentDay === day)
+                    {
 
-        });
+                        state.currentDay += 1;
+                        state.streakDays += 1;
+
+
+                        localStorage.setItem(
+                            "abtalks-dashboard-state",
+                            JSON.stringify(state)
+                        );
+
+
+                        completeButton.textContent =
+                            "Challenge Completed";
+
+
+                        completeButton.disabled =
+                            true;
+
+
+                        completionMessage.textContent =
+                            `Great job! Day ${day} is complete.`;
+
+                        completionMessage.style.display =
+                            "block";
+
+                    }
+
+                }
+            );
+
+        }
 
     </script>
 
