@@ -81,43 +81,86 @@
 
     <script>
 
-        const challengeList =
-            document.getElementById("challenge-list");
+    const challengeList =
+        document.getElementById("challenge-list");
 
-        challenges.forEach(challenge =>
+    const saved =
+        localStorage.getItem("abtalks-dashboard-state");
+
+    let currentDay = 12;
+
+    if(saved)
+    {
+        try
         {
+            const state = JSON.parse(saved);
 
-            const card =
-                document.createElement("div");
+            currentDay =
+                Number(state.currentDay) || 12;
+        }
+        catch(error)
+        {
+            currentDay = 12;
+        }
+    }
 
-            card.className =
-                "achievement";
 
-            card.innerHTML = `
-                <div class="achievement-icon">
-                    ${String(challenge.day).padStart(2, "0")}
-                </div>
+    challenges.forEach(challenge =>
+    {
 
-                <div>
-                    <h4>
-                        ${challenge.title}
-                    </h4>
+        const card =
+            document.createElement("div");
 
-                    <p>
-                        ${challenge.level} · ${challenge.time}
-                    </p>
+        card.className =
+            "achievement";
 
-                    <a href="challenge.html?day=${challenge.day}">
-                        View Challenge →
-                    </a>
-                </div>
-            `;
 
-            challengeList.appendChild(card);
+        let status = "";
 
-        });
+        if(challenge.day < currentDay)
+        {
+            status = "✓ COMPLETED";
+        }
+        else if(challenge.day === currentDay)
+        {
+            status = "● CURRENT";
+        }
+        else
+        {
+            status = "LOCKED";
+        }
 
-    </script>
+
+        card.innerHTML = `
+            <div class="achievement-icon">
+                ${String(challenge.day).padStart(2, "0")}
+            </div>
+
+            <div>
+                <h4>
+                    ${challenge.title}
+                </h4>
+
+                <p>
+                    ${challenge.level} · ${challenge.time}
+                </p>
+
+                <p>
+                    ${status}
+                </p>
+
+                <a href="challenge.html?day=${challenge.day}">
+                    View Challenge →
+                </a>
+            </div>
+        `;
+
+
+        challengeList.appendChild(card);
+
+    });
+
+</script>
 
 </body>
 
