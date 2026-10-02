@@ -226,104 +226,91 @@
     </nav>
 
 
-    <!-- Challenge data -->
     <script src="challenges.js"></script>
 
+<script>
 
-    <script>
+    const params =
+        new URLSearchParams(window.location.search);
 
-        const params =
-            new URLSearchParams(window.location.search);
+    const day =
+        Number(params.get("day")) || 1;
 
-        const day =
-            Number(params.get("day")) || 1;
+    const challenge =
+        challenges.find(item => item.day === day);
 
+    if (challenge)
+    {
+        document.title =
+            `ABTalks - Day ${challenge.day}`;
 
-        const challenge =
-            challenges.find(item => item.day === day);
+        document.getElementById("page-day").textContent =
+            `Day ${challenge.day}`;
 
+        document.getElementById("challenge-number").textContent =
+            challenge.day;
 
-        if (challenge)
-        {
-            document.title =
-                `ABTalks - Day ${challenge.day}`;
+        document.getElementById("challenge-title").textContent =
+            challenge.title;
 
+        document.getElementById("challenge-description").textContent =
+            challenge.description;
 
-            document.getElementById("page-day").textContent =
-                `Day ${challenge.day}`;
+        document.getElementById("challenge-level").textContent =
+            challenge.level;
 
+        document.getElementById("challenge-time").textContent =
+            challenge.time;
 
-            document.getElementById("challenge-number").textContent =
-                challenge.day;
+        document.getElementById("challenge-tool").textContent =
+            `💻 ${challenge.tool}`;
 
-
-            document.getElementById("challenge-title").textContent =
-                challenge.title;
-
-
-            document.getElementById("challenge-description").textContent =
-                challenge.description;
-
-
-            document.getElementById("challenge-level").textContent =
-                challenge.level;
-
-
-            document.getElementById("challenge-time").textContent =
-                challenge.time;
-
-
-            document.getElementById("challenge-tool").textContent =
-                `💻 ${challenge.tool}`;
-
-
-            const requirementElements = [
-                {
-                    title: document.getElementById("requirement-one-title"),
-                    text: document.getElementById("requirement-one")
-                },
-                {
-                    title: document.getElementById("requirement-two-title"),
-                    text: document.getElementById("requirement-two")
-                },
-                {
-                    title: document.getElementById("requirement-three-title"),
-                    text: document.getElementById("requirement-three")
-                },
-                {
-                    title: document.getElementById("requirement-four-title"),
-                    text: document.getElementById("requirement-four")
-                }
-            ];
-
-
-            requirementElements.forEach((element, index) =>
+        const requirementElements = [
             {
-                if (challenge.tasks[index])
-                {
-                    element.title.textContent =
-                        `Task ${index + 1}`;
+                title: document.getElementById("requirement-one-title"),
+                text: document.getElementById("requirement-one")
+            },
+            {
+                title: document.getElementById("requirement-two-title"),
+                text: document.getElementById("requirement-two")
+            },
+            {
+                title: document.getElementById("requirement-three-title"),
+                text: document.getElementById("requirement-three")
+            },
+            {
+                title: document.getElementById("requirement-four-title"),
+                text: document.getElementById("requirement-four")
+            }
+        ];
 
-                    element.text.textContent =
-                        challenge.tasks[index];
-                }
-                else
-                {
-                    element.title.parentElement.parentElement.style.display =
-                        "none";
-                }
-            });
-        }
-        else
+        requirementElements.forEach((element, index) =>
         {
-            document.getElementById("challenge-title").textContent =
-                "Challenge Not Found";
+            if (challenge.tasks[index])
+            {
+                element.title.textContent =
+                    `Task ${index + 1}`;
 
-            document.getElementById("challenge-description").textContent =
-                "The requested challenge does not exist.";
-        }
+                element.text.textContent =
+                    challenge.tasks[index];
+            }
+            else
+            {
+                element.title.parentElement.parentElement.style.display =
+                    "none";
+            }
+        });
+    }
+    else
+    {
+        document.getElementById("challenge-title").textContent =
+            "Challenge Not Found";
 
-    </script>
+        document.getElementById("challenge-description").textContent =
+            "The requested challenge does not exist.";
+    }
+
+</script>
 
 </body>
 
