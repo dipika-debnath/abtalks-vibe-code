@@ -40,12 +40,11 @@
             </p>
 
             <h1 id="challenge-title">
-                Build a Portfolio Hero Section
+                Loading challenge...
             </h1>
 
             <p class="muted-text" id="challenge-description">
-                Create a responsive hero section that introduces
-                you, your skills and what you are currently building.
+                Loading today's challenge details.
             </p>
 
         </section>
@@ -66,7 +65,7 @@
             </div>
 
             <h2 id="challenge-time">
-                45 MIN
+                30 MIN
             </h2>
 
             <p>
@@ -97,11 +96,11 @@
 
                     <div>
                         <h4 id="requirement-one-title">
-                            Introduction
+                            Requirement
                         </h4>
 
                         <p id="requirement-one">
-                            Add your name and a short introduction.
+                            Loading...
                         </p>
                     </div>
 
@@ -116,11 +115,11 @@
 
                     <div>
                         <h4 id="requirement-two-title">
-                            Skills
+                            Requirement
                         </h4>
 
                         <p id="requirement-two">
-                            Mention at least three technologies or skills.
+                            Loading...
                         </p>
                     </div>
 
@@ -135,11 +134,11 @@
 
                     <div>
                         <h4 id="requirement-three-title">
-                            Call To Action
+                            Requirement
                         </h4>
 
                         <p id="requirement-three">
-                            Add a button such as View My Work or Contact Me.
+                            Loading...
                         </p>
                     </div>
 
@@ -154,11 +153,11 @@
 
                     <div>
                         <h4 id="requirement-four-title">
-                            Responsive Design
+                            Requirement
                         </h4>
 
                         <p id="requirement-four">
-                            Make the section readable on desktop and mobile.
+                            Loading...
                         </p>
                     </div>
 
@@ -180,14 +179,14 @@
             </h2>
 
             <p>
-                Make sure your project works correctly, looks clean,
-                and is saved in your GitHub repository.
+                Complete the challenge, test your work,
+                and save your finished project.
             </p>
 
             <div class="mission-details">
 
                 <span id="challenge-tool">
-                    💻 HTML + CSS
+                    💻 Loading...
                 </span>
 
                 <span>
@@ -210,56 +209,119 @@
     <nav class="bottom-nav">
 
         <a href="index.html">
-
             <span>⌂</span>
-
             Home
-
         </a>
 
-
-        <a href="dashboard.html"
-           class="active">
-
+        <a href="dashboard.html">
             <span>▣</span>
-
-            Challenge
-
+            Dashboard
         </a>
-
 
         <a href="#">
-
             <span>○</span>
-
             Profile
-
         </a>
 
     </nav>
 
 
+    <!-- Challenge data -->
+    <script src="challenges.js"></script>
+
+
     <script>
 
-        /*
-         * The page can later be opened as:
-         *
-         * challenge.html?day=12
-         * challenge.html?day=13
-         * challenge.html?day=14
-         *
-         * For now, Day 12 is our first working challenge.
-         */
+        const params =
+            new URLSearchParams(window.location.search);
 
-        const params = new URLSearchParams(window.location.search);
+        const day =
+            Number(params.get("day")) || 1;
 
-        const day = Number(params.get("day")) || 12;
 
-        document.getElementById("page-day").textContent =
-            `Day ${day}`;
+        const challenge =
+            challenges.find(item => item.day === day);
 
-        document.getElementById("challenge-number").textContent =
-            day;
+
+        if (challenge)
+        {
+            document.title =
+                `ABTalks - Day ${challenge.day}`;
+
+
+            document.getElementById("page-day").textContent =
+                `Day ${challenge.day}`;
+
+
+            document.getElementById("challenge-number").textContent =
+                challenge.day;
+
+
+            document.getElementById("challenge-title").textContent =
+                challenge.title;
+
+
+            document.getElementById("challenge-description").textContent =
+                challenge.description;
+
+
+            document.getElementById("challenge-level").textContent =
+                challenge.level;
+
+
+            document.getElementById("challenge-time").textContent =
+                challenge.time;
+
+
+            document.getElementById("challenge-tool").textContent =
+                `💻 ${challenge.tool}`;
+
+
+            const requirementElements = [
+                {
+                    title: document.getElementById("requirement-one-title"),
+                    text: document.getElementById("requirement-one")
+                },
+                {
+                    title: document.getElementById("requirement-two-title"),
+                    text: document.getElementById("requirement-two")
+                },
+                {
+                    title: document.getElementById("requirement-three-title"),
+                    text: document.getElementById("requirement-three")
+                },
+                {
+                    title: document.getElementById("requirement-four-title"),
+                    text: document.getElementById("requirement-four")
+                }
+            ];
+
+
+            requirementElements.forEach((element, index) =>
+            {
+                if (challenge.tasks[index])
+                {
+                    element.title.textContent =
+                        `Task ${index + 1}`;
+
+                    element.text.textContent =
+                        challenge.tasks[index];
+                }
+                else
+                {
+                    element.title.parentElement.parentElement.style.display =
+                        "none";
+                }
+            });
+        }
+        else
+        {
+            document.getElementById("challenge-title").textContent =
+                "Challenge Not Found";
+
+            document.getElementById("challenge-description").textContent =
+                "The requested challenge does not exist.";
+        }
 
     </script>
 
