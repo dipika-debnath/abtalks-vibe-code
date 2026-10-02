@@ -90,16 +90,22 @@ abtalks-vibe-code
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](dashboard.png)
+
+<img src="dashboard.png" width="60%">
 
 ### Today's Challenge
-![Today's Challenge](challenge.png)
+
+<img src="challenge.png" width="60%">
 
 ### All Challenges
-![All Challenges](challenges.png)
+
+<img src="challenges.png" width="60%">
 
 ### Profile
-![Profile](profile.png)
+
+<img src="profile.png" width="60%">
 
 ### Achievements
-![Achievements](achievements.png)
+
+<img src="achievements.png" width="60%">
+
