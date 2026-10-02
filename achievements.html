@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABTalks - Achievements</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <div>
+            <p class="small-text">
+                ABTALKS · 60 DAY CHALLENGE
+            </p>
+
+            <h2>
+                Achievements
+            </h2>
+        </div>
+
+        <div class="profile-circle">
+            D
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="challenge-info">
+
+            <p class="small-text">
+                YOUR MILESTONES
+            </p>
+
+            <h1>
+                Keep Going.
+            </h1>
+
+            <p class="muted-text">
+                Complete challenges to unlock achievements.
+            </p>
+
+        </section>
+
+
+        <section class="achievement-list" id="achievement-list">
+            Loading achievements...
+        </section>
+
+    </main>
+
+
+    <nav class="bottom-nav">
+
+        <a href="index.html">
+            <span>⌂</span>
+            Home
+        </a>
+
+        <a href="dashboard.html">
+            <span>▣</span>
+            Dashboard
+        </a>
+
+        <a href="profile.html">
+            <span>○</span>
+            Profile
+        </a>
+
+    </nav>
+
+
+    <script>
+
+        const achievementList =
+            document.getElementById("achievement-list");
+
+
+        const saved =
+            localStorage.getItem("abtalks-dashboard-state");
+
+
+        let currentDay = 12;
+
+
+        if(saved)
+        {
+            try
+            {
+                const state =
+                    JSON.parse(saved);
+
+                currentDay =
+                    Number(state.currentDay) || 12;
+            }
+            catch(error)
+            {
+                currentDay = 12;
+            }
+        }
+
+
+        const completedDays =
+            Math.max(0, currentDay - 1);
+
+
+        const achievements = [
+
+            {
+                day: 1,
+                icon: "01",
+                title: "First Step",
+                description: "Complete your first coding challenge."
+            },
+
+            {
+                day: 7,
+                icon: "07",
+                title: "One Week Strong",
+                description: "Complete 7 coding challenges."
+            },
+
+            {
+                day: 10,
+                icon: "10",
+                title: "10 Days Coded",
+                description: "Complete 10 coding challenges."
+            },
+
+            {
+                day: 25,
+                icon: "25",
+                title: "25-Day Journey",
+                description: "Complete 25 coding challenges."
+            },
+
+            {
+                day: 30,
+                icon: "50%",
+                title: "Halfway There",
+                description: "Complete 30 coding challenges."
+            },
+
+            {
+                day: 60,
+                icon: "60",
+                title: "60-Day Finisher",
+                description: "Complete the entire coding challenge."
+            }
+
+        ];
+
+
+        achievements.forEach(achievement =>
+        {
+
+            const unlocked =
+                completedDays >= achievement.day;
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "achievement";
+
+
+            card.innerHTML = `
+
+                <div class="achievement-icon">
+                    ${unlocked ? "✓" : achievement.icon}
+                </div>
+
+                <div>
+
+                    <h4>
+                        ${achievement.title}
+                    </h4>
+
+                    <p>
+                        ${achievement.description}
+                    </p>
+
+                    <p>
+                        ${unlocked ? "UNLOCKED" : "LOCKED"}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            achievementList.appendChild(card);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
