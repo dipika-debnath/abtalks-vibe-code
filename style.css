@@ -545,3 +545,27 @@ main {
     text-decoration: none;
     font-weight: 600;
 }
+
+/* Dashboard Action Buttons */
+
+.dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.dashboard-actions a {
+    text-decoration: none;
+}
+
+.dashboard-actions .secondary-button {
+    display: inline-block;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.dashboard-actions .primary-button {
+    text-decoration: none;
+}
