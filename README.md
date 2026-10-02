@@ -86,3 +86,20 @@ abtalks-vibe-code
 ├── style.css
 │
 └── README.md
+```
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Today's Challenge
+![Today's Challenge](challenge.png)
+
+### All Challenges
+![All Challenges](challenges.png)
+
+### Profile
+![Profile](profile.png)
+
+### Achievements
+![Achievements](achievements.png)
